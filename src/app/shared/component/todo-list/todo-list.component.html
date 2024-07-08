@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-title align="center">
+        Todo List
+    </mat-card-title>
+    <mat-card-content *ngIf="todoData.length>0;else noTodo">
+        <mat-list class="matList">
+            <mat-list-item *ngFor="let todo of todoData">
+                {{todo.todoItem}}
+                <span class="w-100" align="end">
+                    <button mat-raised-button class="mr-2" color="primary">Edit</button>
+                    <button mat-raised-button color="warn" (click)="onRemove(todo)">Remove</button>
+                </span>
+                <mat-divider></mat-divider>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+    <ng-template #noTodo>
+        <p class="alert alert-warning text-center">No Todo Item Added Yet!!!</p>
+    </ng-template>
+</mat-card>

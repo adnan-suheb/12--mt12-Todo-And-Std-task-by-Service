@@ -1,0 +1,49 @@
+<mat-card>
+    <mat-card-title align="center">
+        Student Form
+    </mat-card-title>
+    <mat-card-content>
+        <form #stdForm="ngForm" (ngSubmit)="onStdSubmit()" >
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput
+                ngModel name="fname" #fname="ngModel" required pattern="[a-zA-Z]+"
+                >
+                <mat-error *ngIf="fname.touched && fname.hasError('required')">First Name Is Required!!!</mat-error>
+                <mat-error *ngIf="fname.dirty && fname.hasError('pattern')">Numeric and Special Character Not Allowed!!!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput
+                ngModel name="lname" #lname="ngModel" required pattern="[a-zA-Z]+"
+                >
+                <mat-error *ngIf="lname.touched && lname.hasError('required')">Last Name Is Required!!!</mat-error>
+                <mat-error *ngIf="lname.dirty && lname.hasError('pattern')">Numeric and Special Character Not Allowed!!!</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Contact</mat-label>
+                <input matInput
+                ngModel name="contact" #contact="ngModel" required pattern="^\d*$"
+                minlength="10" maxlength="10"
+                >
+                <mat-error *ngIf="contact.touched && contact.hasError('required')">Contact Is Required!!!</mat-error>
+                <mat-error *ngIf="contact.dirty && contact.hasError('pattern')">Aplhabetical and Special Character Not Allowed!!!</mat-error>
+                <mat-error *ngIf="contact.dirty&& contact.hasError('minlength')">Contact length should be {{contact.errors?.['minlength'].requiredLength}} Current length is {{contact.errors?.['minlength'].actualLength}}.</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput
+                ngModel name="email" #email="ngModel" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                
+                >
+                <mat-error *ngIf="email.touched && email.hasError('required')">Email Is Required!!!</mat-error>
+                <mat-error *ngIf="email.dirty && email.hasError('pattern')">Not A Valid Email!!!</mat-error>
+            </mat-form-field>
+
+            <div align="end">
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+            </div>
+        </form>
+    </mat-card-content>
+
+</mat-card>

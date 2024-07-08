@@ -1,0 +1,19 @@
+<mat-card>
+    <mat-card-title align="center">
+        Todo Form
+    </mat-card-title>
+    <mat-card-content>
+        <form #todoForm="ngForm" (ngSubmit)="onTodoSubmit()" >
+            <mat-form-field class="w-100">
+                <mat-label>Enter Todo</mat-label>
+                <input matInput placeholder="Ex. Angular"
+                ngModel #todoItem="ngModel" required name="todoItem"
+                >
+                <mat-error *ngIf="todoItem.touched && todoItem.hasError('required')">This Field Is Required!!!</mat-error>
+            </mat-form-field>
+            <div align="end">
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
